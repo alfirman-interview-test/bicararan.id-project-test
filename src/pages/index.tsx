@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const Home: NextPage = () => {
   const [todos, setTodos] = useState<TodoType[]>(defaultTodos);
+
   return (
     <div className="min-h-screen w-screen bg-blue-50 flex items-center justify-center">
       <div className="">
@@ -33,9 +34,9 @@ const Home: NextPage = () => {
 export default Home;
 
 const defaultTodos = [
-  { id: 1, title: "Make a meal", status: 1 },
-  { id: 2, title: "Dinner with family", status: 0 },
-  { id: 3, title: "Watch scary movie", status: 0 },
-  { id: 4, title: "Learn something new", status: 1 },
-  { id: 5, title: "Make a phone call to mom", status: 1 },
+  { id: 1, title: "Make a meal" },
+  { id: 2, title: "Dinner with family" },
+  { id: 3, title: "Watch scary movie" },
+  { id: 4, title: "Learn something new" },
+  { id: 5, title: "Make a phone call to mom" },
 ];

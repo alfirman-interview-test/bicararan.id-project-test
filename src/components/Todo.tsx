@@ -1,69 +1,24 @@
+import useTodo from "@/lib/useTodo";
 import { TodoType } from "@/types";
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import ArrowIcon from "./ArrowIcon";
 import TrashIcon from "./TrashIcon";
 
 interface TodoProps {
-  todo: TodoType;
+  index: number;
   todos: TodoType[];
   setTodos: Dispatch<SetStateAction<TodoType[]>>;
 }
 
-export default function Todo({ todo, setTodos, todos }: TodoProps) {
-  const [title, setTitle] = useState<string>(todo.title || "");
-  const [isUpdate, setUpdate] = useState(false);
-
-  const changeTitle = (e: ChangeEvent<HTMLInputElement>) =>
-    setTitle(e.target.value);
-
-  const updateTitle = () => {
-    if (todo.title === title) return;
-
-    const targetIndex = todos.findIndex((el) => el.id === todo.id);
-    if (targetIndex === -1) return;
-
-    todos[targetIndex].title = title;
-    setTodos([...todos]);
-
-    setUpdate(true);
-    setTimeout(() => {
-      setUpdate(false);
-    }, 800);
-  };
-
-  const removeTodo = () =>
-    setTodos((crr) => crr.filter((el) => el.id !== todo.id));
-
-  const moveTodo = (movement: string) => {
-    const targetIndex = todos.findIndex((el) => el.id === todo.id);
-    if (targetIndex === -1) return;
-
-    let nextIndex = 0;
-    
-    if (movement === "down") {
-      nextIndex = 1 + targetIndex;
-      if (targetIndex === todos.length - 1) return;
-    }
-    if (movement === "up") {
-      nextIndex = -1 + targetIndex;
-      if (targetIndex === 0) return;
-    }
-
-    let todo1 = todos[targetIndex];
-    let todo2 = todos[nextIndex];
-
-    todos[targetIndex] = todo2;
-    todos[nextIndex] = todo1;
-
-    setTodos([...todos]);
-  };
+export default function Todo({ index, setTodos, todos }: TodoProps) {
+  const { title, updateTitle, changeTitle, moveTodo, removeTodo, isUpdate} = useTodo(setTodos);
 
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center space-x-4">
         <input
-          value={title}
-          onBlur={updateTitle}
+          value={title || todos[index].title}
+          onBlur={() => updateTitle(index, todos)}
           placeholder="write down here..."
           onChange={(e) => changeTitle(e)}
           className={`${
@@ -72,16 +27,16 @@ export default function Todo({ todo, setTodos, todos }: TodoProps) {
         />
       </div>
       <div className="flex items-center space-x-2">
-        <button onClick={() => moveTodo("up")}>
+        <button onClick={() => moveTodo(index, todos, "up")}>
           <ArrowIcon />
         </button>
         <button
-          onClick={() => moveTodo("down")}
+          onClick={() => moveTodo(index, todos, "down")}
           className="transform rotate-180"
         >
           <ArrowIcon />
         </button>
-        <button onClick={removeTodo}>
+        <button onClick={() => removeTodo(index, todos)}>
           <TrashIcon />
         </button>
       </div>

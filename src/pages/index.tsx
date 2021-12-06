@@ -1,14 +1,12 @@
+import { useState } from "react";
+import type { NextPage } from "next";
 import ButtonNewTask from "@/components/ButtonNewTask";
 import TitleBar from "@/components/TitleBar";
 import Todo from "@/components/Todo";
 import { TodoType } from "@/types";
-import type { NextPage } from "next";
-import { useState } from "react";
 
 const Home: NextPage = () => {
   const [todos, setTodos] = useState<TodoType[]>(defaultTodos);
-
-  console.log(todos);
 
   return (
     <div className="min-h-screen w-screen bg-blue-50 flex items-center justify-center">
@@ -20,7 +18,7 @@ const Home: NextPage = () => {
           <ul className="space-y-3 mt-3">
             {todos.map((todo, i) => (
               <li key={todo.id}>
-                <Todo todo={todo} todos={todos} setTodos={setTodos} />
+                <Todo index={i} todos={todos} setTodos={setTodos} />
               </li>
             ))}
           </ul>

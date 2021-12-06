@@ -1,3 +1,4 @@
+import useTodo from "@/lib/useTodo";
 import { TodoType } from "@/types";
 import { Dispatch, SetStateAction } from "react";
 
@@ -6,10 +7,7 @@ interface ButtonNewTaskProps {
 }
 
 export default function ButtonNewTask({ setTodos }: ButtonNewTaskProps) {
-  const addNewTodo = () => {
-    const newTodo = { id: Date.now(), title: "" };
-    setTodos((crr) => [...crr, newTodo]);
-  };
+  const { addNewTodo } = useTodo(setTodos);
 
   return (
     <button

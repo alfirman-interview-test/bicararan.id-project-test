@@ -1,8 +1,13 @@
+import { TodoType } from "@/types";
 import CheckIcon from "./CheckIcon";
 import TrashIcon from "./TrashIcon";
 import UnCheckIcon from "./UnCheckIcon";
 
-export default function Todo({ todo }) {
+interface TodoProps {
+  todo: TodoType;
+}
+
+export default function Todo({ todo }: TodoProps) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center space-x-4">

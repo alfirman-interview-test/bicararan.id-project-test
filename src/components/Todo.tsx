@@ -1,11 +1,5 @@
 import { TodoType } from "@/types";
-import {
-  ChangeEvent,
-  Dispatch,
-  FormEvent,
-  SetStateAction,
-  useState,
-} from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import CheckIcon from "./CheckIcon";
 import TrashIcon from "./TrashIcon";
 import UnCheckIcon from "./UnCheckIcon";
@@ -17,6 +11,7 @@ interface TodoProps {
 
 export default function Todo({ todo, setTodos }: TodoProps) {
   const [title, setTitle] = useState<string>(todo.title || "");
+  const [isUpdate, setUpdate] = useState(false);
 
   const removeTodo = () =>
     setTodos((crr) => crr.filter((el) => el.id !== todo.id));
@@ -32,6 +27,10 @@ export default function Todo({ todo, setTodos }: TodoProps) {
       crr[targetIndex].title = title;
       return crr;
     });
+    setUpdate(true);
+    setTimeout(() => {
+      setUpdate(false);
+    }, 800);
   };
 
   return (
@@ -45,7 +44,9 @@ export default function Todo({ todo, setTodos }: TodoProps) {
           value={title}
           onBlur={updateTitle}
           onChange={(e) => changeTitle(e)}
-          className="text-gray-600 hover:ring focus:outline-none focus:ring-purple-500"
+          className={`${
+            isUpdate && "ring ring-green-500"
+          } hover:ring hover:ring-purple-500 focus:ring-yellow-500 text-gray-600 focus:outline-none `}
         />
       </div>
       <button onClick={removeTodo}>

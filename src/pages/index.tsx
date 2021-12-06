@@ -17,7 +17,7 @@ const Home: NextPage = () => {
           <ul className="space-y-3 mt-3">
             {todos.map((todo) => (
               <li key={todo.id}>
-                <Todo todo={todo} />
+                <Todo todo={todo} setTodos={setTodos} />
               </li>
             ))}
           </ul>

@@ -8,6 +8,8 @@ import { useState } from "react";
 const Home: NextPage = () => {
   const [todos, setTodos] = useState<TodoType[]>(defaultTodos);
 
+  console.log(todos);
+
   return (
     <div className="min-h-screen w-screen bg-blue-50 flex items-center justify-center">
       <div className="">
@@ -16,9 +18,9 @@ const Home: NextPage = () => {
         </div>
         <div className="bg-white h-full shadow-md p-10 space-y-4">
           <ul className="space-y-3 mt-3">
-            {todos.map((todo) => (
+            {todos.map((todo, i) => (
               <li key={todo.id}>
-                <Todo todo={todo} setTodos={setTodos} />
+                <Todo todo={todo} todos={todos} setTodos={setTodos} />
               </li>
             ))}
           </ul>

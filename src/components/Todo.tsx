@@ -41,6 +41,7 @@ export default function Todo({ todo, setTodos }: TodoProps) {
         <input
           value={title}
           onBlur={updateTitle}
+          placeholder="write down here..."
           onChange={(e) => changeTitle(e)}
           className={`${
             isUpdate && "ring ring-green-500"

@@ -7,7 +7,7 @@ interface ButtonNewTaskProps {
 
 export default function ButtonNewTask({ setTodos }: ButtonNewTaskProps) {
   const addNewTodo = () => {
-    const newTodo = { id: Date.now(), title: "new todo", status: 0 };
+    const newTodo = { id: Date.now(), title: "" };
     setTodos((crr) => [...crr, newTodo]);
   };
 

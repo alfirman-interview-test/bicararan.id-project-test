@@ -14,13 +14,11 @@ const Home: NextPage = () => {
         </div>
         <div className="bg-white h-full shadow-md p-10 space-y-4">
           <ul className="space-y-3 mt-3">
-            {todos
-              .sort((a, b) => b.id - a.id)
-              .map((todo) => (
-                <li key={todo.id}>
-                  <Todo todo={todo} />
-                </li>
-              ))}
+            {todos.map((todo) => (
+              <li key={todo.id}>
+                <Todo todo={todo} />
+              </li>
+            ))}
           </ul>
         </div>
         <div className="flex justify-center">
@@ -38,31 +36,26 @@ const defaultTodos = [
   {
     id: 1,
     title: "Make a meal",
-    description: "lorem ipsum",
-    status: 0,
+    status: 1,
   },
   {
     id: 2,
     title: "Dinner with family",
-    description: "lorem ipsum",
     status: 0,
   },
   {
     id: 3,
     title: "Watch scary movie",
-    description: "lorem ipsum",
     status: 0,
   },
   {
     id: 4,
     title: "Learn something new",
-    description: "lorem ipsum",
     status: 1,
   },
   {
     id: 5,
     title: "Make a phone call to mom",
-    description: "lorem ipsum",
     status: 1,
   },
 ];

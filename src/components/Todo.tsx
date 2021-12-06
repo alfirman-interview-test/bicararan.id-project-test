@@ -10,9 +10,10 @@ export default function Todo({ todo }) {
           {todo.status === 1 && <CheckIcon />}
           {todo.status === 0 && <UnCheckIcon />}
         </button>
-        <p className="text-gray-600 cursor-pointer hover:underline">
-          {todo.title}
-        </p>
+        <input
+          value={todo.title}
+          className="text-gray-600 hover:ring focus:outline-none focus:ring-purple-500"
+        />
       </div>
       <button>
         <TrashIcon />

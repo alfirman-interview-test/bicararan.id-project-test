@@ -27,4 +27,4 @@ Good luck!
 
 My Submission : [https://todo-next-orcin.vercel.app/](https://todo-next-orcin.vercel.app/)
 
-![Preview](https://firebasestorage.googleapis.com/v0/b/image-storage-aaa6b.appspot.com/o/calculator%20vanilla%20js.png?alt=media&token=ff8a0522-6b0a-47ae-a33f-091d32cc7d3f)
+![Preview](https://firebasestorage.googleapis.com/v0/b/image-storage-aaa6b.appspot.com/o/todo-next.png?alt=media&token=913b1179-9030-4f7c-b24e-8b2b61541f30)

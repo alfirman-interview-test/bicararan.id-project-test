@@ -20,6 +20,7 @@ export default function Todo({ todo, setTodos, todos }: TodoProps) {
     if (todo.title === title) return;
 
     const targetIndex = todos.findIndex((el) => el.id === todo.id);
+    if (targetIndex === -1) return;
 
     todos[targetIndex].title = title;
     setTodos([...todos]);
@@ -33,26 +34,29 @@ export default function Todo({ todo, setTodos, todos }: TodoProps) {
   const removeTodo = () =>
     setTodos((crr) => crr.filter((el) => el.id !== todo.id));
 
-  // const moveDownTodo = () => {
-  //   setTodos((crr) => {
-  //     let targetIndex = crr.findIndex((el) => el.id === todo.id);
-  //     if (targetIndex === -1) return crr;
+  const moveTodo = (movement: string) => {
+    const targetIndex = todos.findIndex((el) => el.id === todo.id);
+    if (targetIndex === -1) return;
 
-  //     let todo1 = crr[targetIndex];
-  //     let todo2 = crr[targetIndex + 1];
+    let nextIndex = 0;
+    
+    if (movement === "down") {
+      nextIndex = 1 + targetIndex;
+      if (targetIndex === todos.length - 1) return;
+    }
+    if (movement === "up") {
+      nextIndex = -1 + targetIndex;
+      if (targetIndex === 0) return;
+    }
 
-  //     crr[targetIndex].title = "as";
+    let todo1 = todos[targetIndex];
+    let todo2 = todos[nextIndex];
 
-  //     // console.log(crr)
+    todos[targetIndex] = todo2;
+    todos[nextIndex] = todo1;
 
-  //     let todos = crr
-  //     // crr[targetIndex + 1] = todo1;
-
-  //     // console.log(todo)
-
-  //     return todos;
-  //   });
-  // };
+    setTodos([...todos]);
+  };
 
   return (
     <div className="flex items-center justify-between">
@@ -68,10 +72,13 @@ export default function Todo({ todo, setTodos, todos }: TodoProps) {
         />
       </div>
       <div className="flex items-center space-x-2">
-        <button>
+        <button onClick={() => moveTodo("up")}>
           <ArrowIcon />
         </button>
-        <button className="transform rotate-180">
+        <button
+          onClick={() => moveTodo("down")}
+          className="transform rotate-180"
+        >
           <ArrowIcon />
         </button>
         <button onClick={removeTodo}>

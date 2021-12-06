@@ -14,7 +14,7 @@ export default function useTodo(setTodos: Dispatch<SetStateAction<TodoType[]>>) 
   };
 
   const updateTitle = (index: number, todos: TodoType[]) => {
-    if (todos[index].title === title) return;
+    if (todos[index].title === title || !title) return;
 
     todos[index].title = title;
     setTodos([...todos]);

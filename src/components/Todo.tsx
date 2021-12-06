@@ -1,5 +1,6 @@
 import { TodoType } from "@/types";
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import ArrowIcon from "./ArrowIcon";
 import TrashIcon from "./TrashIcon";
 
 interface TodoProps {
@@ -46,9 +47,17 @@ export default function Todo({ todo, setTodos }: TodoProps) {
           } hover:ring hover:ring-purple-500 focus:ring-yellow-500 text-gray-600 focus:outline-none `}
         />
       </div>
-      <button onClick={removeTodo}>
-        <TrashIcon />
-      </button>
+      <div className="flex items-center space-x-2">
+        <button>
+          <ArrowIcon />
+        </button>
+        <button className="transform rotate-180">
+          <ArrowIcon />
+        </button>
+        <button onClick={removeTodo}>
+          <TrashIcon />
+        </button>
+      </div>
     </div>
   );
 }

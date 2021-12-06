@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <div className=" mb-5 w-full xs:w-[400px]">
           <TitleBar />
         </div>
-        <div className="bg-white h-full shadow-md p-10 space-y-4  w-full xs:w-[400px] ring">
+        <div className="bg-white h-full shadow-md p-10 space-y-4  w-full xs:w-[400px]">
           <ul className="space-y-3 mt-3">
             {todos.map((todo, i) => (
               <li key={todo.id}>

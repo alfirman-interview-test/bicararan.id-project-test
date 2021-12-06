@@ -1,8 +1,6 @@
 import { TodoType } from "@/types";
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
-import CheckIcon from "./CheckIcon";
 import TrashIcon from "./TrashIcon";
-import UnCheckIcon from "./UnCheckIcon";
 
 interface TodoProps {
   todo: TodoType;
@@ -19,7 +17,7 @@ export default function Todo({ todo, setTodos }: TodoProps) {
 
   const updateTitle = () => {
     if (todo.title === title) return;
-    
+
     setTodos((crr) => {
       let targetIndex = crr.findIndex((el) => el.id === todo.id);
       if (targetIndex === -1) return crr;

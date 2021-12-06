@@ -10,11 +10,11 @@ const Home: NextPage = () => {
 
   return (
     <div className="min-h-screen w-screen bg-blue-50 flex items-center justify-center">
-      <div className="">
-        <div className=" mb-5 w-[400px]">
+      <div>
+        <div className=" mb-5 w-full xs:w-[400px]">
           <TitleBar />
         </div>
-        <div className="bg-white h-full shadow-md p-10 space-y-4">
+        <div className="bg-white h-full shadow-md p-10 space-y-4  w-full xs:w-[400px] ring">
           <ul className="space-y-3 mt-3">
             {todos.map((todo, i) => (
               <li key={todo.id}>
